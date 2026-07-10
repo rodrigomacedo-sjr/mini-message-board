@@ -53,7 +53,7 @@ messages.push({ text: messageText, user: messageUser, added: new Date() });
 
 ## TODO
 
-- [ ] boilerplate
+- [x] boilerplate
 - [ ] mock data
 - [ ] view all
 - [ ] input form
