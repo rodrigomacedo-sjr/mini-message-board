@@ -49,6 +49,10 @@ messages.push({ text: messageText, user: messageUser, added: new Date() });
 12. Push your project to GitHub.
 13. You’ll learn how to deploy your app to the web in the next lesson, don’t forget to come back and submit it to the submissions below once you’re done!
 
+## Idea:
+
+![Excalidraw of the low fidelity screens of index and new message](idea.png)
+
 ## TODO
 
 - [x] boilerplate
