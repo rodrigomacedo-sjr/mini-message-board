@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head.ejs") %>
+
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <div>
+      <p><%=message.content%></p>
+
+      <div>
+        <div>
+          <p>message.from</p>
+          <p>message.timestamp</p>
+        </div>
+        <a class="delete" data-id="<%=message.id%>">delete</a>
+      </div>
+    </div>
+
+    <%- include("../partials/footer.ejs") %>
+    <%- include("../partials/deleteButtonScript.ejs") %>
+  </body>
+</html>
