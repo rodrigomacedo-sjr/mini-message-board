@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/header.ejs") %>
+
+    <div>
+      <p><%=message.content%></p>
+
+      <div>
+        <div>
+          <p>message.from</p>
+          <p>message.timestamp</p>
+        </div>
+        <a class="delete" data-id="<%=message.id%>">delete</a>
+      </div>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+
+    <script>
+      const deleteButton = document.querySelector("a.delete");
+
+      deleteButton.addEventListener("click", (e) => {
+        const endpoint = `/message/${deleteButton.dataset.id}`;
+
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => (window.location.href = data.redirect))
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+
+  </body>
+</html>

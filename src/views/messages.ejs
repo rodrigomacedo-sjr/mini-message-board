@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/header.ejs") %> 
+
+    <% if (messages.length <= 0) { %>
+      <p>no messages yet...</p>
+      <p>be the first to create one!</p>
+    <%} %>
+
+    <% messages.forEach((message) => {%>
+      <div class="msg-card">
+        <p><%=message.content%></p>
+        <div class="msg-card-footer">
+          <div class="msg-info">
+            <p>message.timestamp</p>
+            <p><%=message.from%></p>
+          </div>
+
+          <div class="msg-actions">
+            <a href="/message/<%=message.id%>">details</a>
+            <a class="delete" data-id="<%=message.id%>">delete</a>
+          </div>
+        </div>
+      </div>
+    <%})%>
+
+    <%- include("./partials/footer.ejs") %>
+
+    <script>
+      const deleteButton = document.querySelector("a.delete");
+
+      deleteButton.addEventListener("click", (e) => {
+        const endpoint = `/message/${deleteButton.dataset.id}`;
+
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => (window.location.href = data.redirect))
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+</html>

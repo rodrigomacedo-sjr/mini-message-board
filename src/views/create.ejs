@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/header.ejs") %>
+
+    <form action"/messages" method="POST">
+      <label for="from">From:</label>
+      <input type="text" id="from" name="from" placeholder="anonymous"/>
+
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" required placeholder="type here..."></textarea>
+      <div>
+        <button type="reset">x</button>
+        <button type="submit">></button>
+      </div>
+    </form>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>
