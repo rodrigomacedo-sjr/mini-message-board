@@ -25,7 +25,7 @@ const getById = (id) => {
   });
 
   if (!result) {
-    throw new Error(`Message with id ${id} not found`);
+    throw new Error(`Message with given id not found`);
   }
 
   return result;
@@ -36,7 +36,7 @@ const save = (message) => {
     throw new Error("Message must contain id");
   }
 
-  if (!Object.hasOwn(message, "content")) {
+  if (!Object.hasOwn(message, "content") || message.content == undefined || message.content == "") {
     throw new Error("Message must contain content");
   }
 

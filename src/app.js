@@ -12,16 +12,32 @@ app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});
+
+app.get("/", (_, res) => {
   res.redirect("/message");
 });
 
-app.get("/about", (req, res) => {
+app.get("/about", (_, res) => {
   res.render("about", { title: "About" });
 });
 
 app.use("/message", messageRouter);
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
+app.use((req, res, next) => {
+  const err = new Error("Not found");
+  err.status = 404;
+  next(err);
+})
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+
+  if (err.status === 404) {
+    res.render("404", { title: "404" });
+  } else {
+    res.render("500", { title: "500" });
+  }
 });

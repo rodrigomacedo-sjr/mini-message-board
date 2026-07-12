@@ -1,25 +1,25 @@
 import { randomUUIDv7 } from "bun";
 import db from "../db";
 
-const getAll = (req, res) => {
+const getAll = (_, res) => {
   res.render("message/index", { title: "Messages", messages: db.getAll() });
 };
 
-const getById = (req, res) => {
+const getById = (req, res, next) => {
   try {
     const result = db.getById(req.params.id);
     res.render("message/details", { title: "Details", message: result });
   } catch (err) {
-    // TODO: raise a not found error and let an express layer handle this
-    res.status(404).render("404", { title: "404" });
+    err.status = 404;
+    next(err);
   }
 };
 
-const createForm = (req, res) => {
+const createForm = (_, res) => {
   res.render("message/create", { title: "Create " });
 };
 
-const create = (req, res) => {
+const create = (req, res, next) => {
   const message = {
     id: randomUUIDv7(),
     from: req.body.from,
@@ -30,18 +30,20 @@ const create = (req, res) => {
   try {
     db.save(message);
   } catch (err) {
-    res.status(500).send(err);
+    err.status = 500;
+    next(err);
+    return;
   }
 
   res.redirect("/");
 };
 
-const deleteById = (req, res) => {
+const deleteById = (req, res, next) => {
   try {
-    const result = db.deleteById(req.params.id);
-    console.log(result);
+    db.deleteById(req.params.id);
   } catch (err) {
-    console.log(err);
+    err.status = 500;
+    next(err);
   }
   res.json({ redirect: "/" });
 };
