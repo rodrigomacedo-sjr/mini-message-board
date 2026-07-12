@@ -70,5 +70,6 @@ messages.push({ text: messageText, user: messageUser, added: new Date() });
 ## How to Run
 
 ```bash
+bun install
 bun dev
 ```
