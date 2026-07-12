@@ -1,0 +1,25 @@
+a {
+  position: relative;
+  transition: color 150ms ease, background 150ms ease, transform 150ms ease, border-color 150ms ease;
+}
+
+a:not(.site-logo):not(.delete):not(.nav a):not(.msg-actions a)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms ease;
+}
+
+a:not(.site-logo):not(.delete):not(.nav a):not(.msg-actions a):hover {
+  color: var(--link-hover);
+}
+
+a:not(.site-logo):not(.delete):not(.nav a):not(.msg-actions a):hover::after {
+  transform: scaleX(1);
+}

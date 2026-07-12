@@ -1,0 +1,113 @@
+.msg-card,
+.message-detail,
+form,
+h2,
+h2 + p,
+body > p {
+  width: min(100% - 2rem, var(--container));
+}
+
+.site-header {
+  width: 100%;
+  margin: 0;
+  padding: 1rem max(1rem, calc((100% - var(--container)) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #182437;
+  background: var(--header-bg);
+  color: var(--header-ink);
+}
+
+.site-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.07em;
+}
+
+.site-logo:hover {
+  color: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.nav {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.nav a {
+  padding: 0.75rem 0.9rem;
+  border-left: 1px solid rgba(255, 248, 237, 0.22);
+  color: var(--header-ink);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.nav a:last-child {
+  border-right: 1px solid rgba(255, 248, 237, 0.22);
+}
+
+.nav a:hover {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.msg-actions a,
+.message-detail .delete,
+button {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.msg-actions a:hover,
+.message-detail .delete:hover,
+button:hover {
+  background: var(--ink);
+  color: var(--surface);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 0 rgba(36, 32, 27, 0.12);
+}
+
+.site-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 1rem max(1rem, calc((100% - var(--container)) / 2));
+  background: var(--footer-bg);
+  color: var(--footer-ink);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+h2 {
+  margin: 3rem 0 0;
+  font-size: clamp(2.5rem, 10vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+}
+
+h2 + p,
+body > p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+h2 + p a,
+body > p a {
+  font-weight: 800;
+  color: var(--link-hover);
+}

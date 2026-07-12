@@ -1,0 +1,35 @@
+@media (max-width: 560px) {
+  body {
+    gap: 0.8rem;
+  }
+
+  .site-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav a {
+    text-align: center;
+  }
+
+  .msg-card-footer,
+  .message-detail-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .msg-actions,
+  form > div {
+    justify-content: stretch;
+  }
+
+  .msg-actions a,
+  button {
+    flex: 1;
+  }
+}
