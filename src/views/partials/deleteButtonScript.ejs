@@ -1,14 +1,17 @@
 <script>
-  const deleteButton = document.querySelector("a.delete");
+  const deleteButtons = document.querySelectorAll("a.delete");
 
-  deleteButton.addEventListener("click", (e) => {
-    const endpoint = `/message/${deleteButton.dataset.id}`;
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const targetId = e.currentTarget.dataset.id;
+      const endpoint = `/message/${targetId}`;
 
-    fetch(endpoint, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((data) => (window.location.href = data.redirect))
-      .catch((err) => console.log(err));
+      fetch(endpoint, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((data) => (window.location.href = data.redirect))
+        .catch((err) => console.log(err));
+    });
   });
 </script>
