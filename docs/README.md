@@ -57,15 +57,18 @@ messages.push({ text: messageText, user: messageUser, added: new Date() });
 
 - [x] boilerplate
 - [x] mock data
-- [ ] view all
-- [ ] input form
-  - [ ] redirect to view all
-- [ ] msg details
+- [x] view all
+- [x] input form
+  - [x] redirect to view all
+- [x] msg details
+- [x] styling
 
 ## Requirements
 
-TODO
+[Bun](https://bun.com/)
 
 ## How to Run
 
-TODO
+```bash
+bun dev
+```
