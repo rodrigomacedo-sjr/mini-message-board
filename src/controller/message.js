@@ -1,13 +1,12 @@
-import { randomUUIDv7 } from "bun";
-import db from "../db";
+import db from "../db/db.js";
 
-const getAll = (_, res) => {
-  res.render("message/index", { title: "Messages", messages: db.getAll() });
+const getAll = async (_, res) => {
+  res.render("message/index", { title: "Messages", messages: await db.getAll() });
 };
 
-const getById = (req, res, next) => {
+const getById = async (req, res, next) => {
   try {
-    const result = db.getById(req.params.id);
+    const result = await db.getById(req.params.id);
     res.render("message/details", { title: "Details", message: result });
   } catch (err) {
     err.status = 404;
@@ -19,16 +18,14 @@ const createForm = (_, res) => {
   res.render("message/create", { title: "Create " });
 };
 
-const create = (req, res, next) => {
+const create = async (req, res, next) => {
   const message = {
-    id: randomUUIDv7(),
-    from: req.body.from,
+    sender: req.body.sender,
     content: req.body.content,
-    timestamp: Date.now(),
   };
 
   try {
-    db.save(message);
+    await db.save(message);
   } catch (err) {
     err.status = 500;
     next(err);
@@ -38,9 +35,9 @@ const create = (req, res, next) => {
   res.redirect("/");
 };
 
-const deleteById = (req, res, next) => {
+const deleteById = async (req, res, next) => {
   try {
-    db.deleteById(req.params.id);
+    await db.deleteById(req.params.id);
   } catch (err) {
     err.status = 500;
     next(err);

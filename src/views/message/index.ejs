@@ -16,7 +16,7 @@
         <div class="msg-card-footer">
           <div class="msg-info">
             <p>
-              <%= new Date(message.timestamp).toLocaleString("pt-BR", {
+              <%= new Date(message.created_at).toLocaleString("pt-BR", {
                 day: "2-digit",
                 month: "2-digit",
                 year: "numeric",
@@ -25,7 +25,7 @@
               }) %>
             </p>
 
-            <p><%=message.from%></p>
+            <p><%=message.sender%></p>
           </div>
 
           <div class="msg-actions">

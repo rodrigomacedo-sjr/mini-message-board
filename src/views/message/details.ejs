@@ -10,9 +10,9 @@
 
       <div class="message-detail-footer">
         <div class="msg-info">
-          <p><%=message.from%></p>
+          <p><%=message.sender%></p>
           <p>
-            <%= new Date(message.timestamp).toLocaleString("pt-BR", {
+            <%= new Date(message.created_at).toLocaleString("pt-BR", {
               day: "2-digit",
               month: "2-digit",
               year: "numeric",

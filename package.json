@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --watch src/app.js"
+    "dev": "bun --watch src/app.js",
+    "seed": "bun src/db/seed.js"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -15,6 +16,7 @@
   "dependencies": {
     "ejs": "^6.0.1",
     "express": "^5.2.1",
-    "morgan": "^1.11.0"
+    "morgan": "^1.11.0",
+    "pg": "^8.22.0"
   }
 }
